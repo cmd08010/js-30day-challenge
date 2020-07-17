@@ -37,6 +37,18 @@ body,html {
   border-color: #ffc600;
   box-shadow: 0 0 1rem #ffc600;
 }
+#played {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 1.5rem;
+  font-size: 2rem;
+  color: white;
+  border-radius: 1rem;
+  align-items: flex-end;
+
+}
 
 kbd {
   display: block;
