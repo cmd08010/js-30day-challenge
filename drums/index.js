@@ -1,16 +1,14 @@
-const played = []
+var playedKeys = []
+
 
 const showPlayedKeys = (e) => {
+  console.log(playedKeys, "test")
 
-  const playedKeys = document.querySelector('#played')
-
-  played.push(e.key.toUpperCase())
-  played.join(" ")
-
-
-  console.log(played)
-  playedKeys.innerHTML = played.join(" ")
-
+  // if (!audio) return
+  // played.push(e.key.toUpperCase())
+  // played.join(" ")
+  // console.log(played)
+  // playedKeys.innerHTML = played.join(" ")
 
 }
 
@@ -20,10 +18,14 @@ const playSound = (e) => {
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
     key.classList.add('playing')
 
-    if (!audio) {
-      return;
-    }
+    console.log(key, "key")
+    var played = [{
+      eventKey: key,
+      eventAudio: audio
+    }]
 
+
+    playedKeys = [...played, { eventKey: key, eventAudio: audio }]
     audio.currentTime = 0
     audio.play()
   })
@@ -39,6 +41,16 @@ const removeTranstion = (e) => {
   e.target.classList.remove('playing')
 }
 
+const playAgain = (e) => {
+  console.log(played, "test play again")
+
+
+  played.forEach(key => console.log(key, "testing the key in play again"))
+  playSound()
+}
+const button = document.querySelector("button")
+
+button.addEventListener('click', playAgain)
 
 const keys = document.querySelectorAll(".key")
 keys.forEach(key => {
